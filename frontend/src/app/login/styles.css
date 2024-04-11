@@ -1,0 +1,49 @@
+.circle-1 {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  background: #4776e6;
+  background: -webkit-linear-gradient(to right, #8e54e9, #4776e6);
+  background: linear-gradient(to right, #8e54e9, #4776e6);
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+.circle-2 {
+  position: absolute;
+  bottom: 0%;
+  right: 25%;
+  background: #bc4e9c;
+  background: -webkit-linear-gradient(to right, #f80759, #bc4e9c);
+  background: linear-gradient(to right, #f80759, #bc4e9c);
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+.circle-3 {
+  position: absolute;
+  top: 10%;
+  right: 35%;
+  background-color: #ff3cac;
+  background: #ff9966;
+  background: -webkit-linear-gradient(to right, #ff5e62, #ff9966);
+  background: linear-gradient(to right, #ff5e62, #ff9966);
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.card {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: max-content;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
