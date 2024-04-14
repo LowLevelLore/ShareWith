@@ -33,6 +33,16 @@ body {
   padding: 0;
 }
 
+.ReactModal__Overlay,
+.ReactModal__Overlay--after-open {
+  background-color: black !important;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
 body::-webkit-scrollbar {
   display: none;
 }
@@ -92,6 +102,10 @@ footer a {
   background: #eee;
   font-size: 16px;
   font-weight: bold;
+}
+
+.ReactModalPortal {
+  opacity: 0.8;
 }
 
 .btn {

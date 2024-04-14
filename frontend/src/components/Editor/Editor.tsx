@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ACTIONS from "./Actions";
 import Editor from "@monaco-editor/react";
-import { initSocket } from "@/lib/socket";
 import { Socket } from "socket.io-client";
-// import CodeMirror from "@uiw/react-codemirror";
-// import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 
 function Editor__(props: {
   roomId: string;
@@ -17,7 +14,8 @@ function Editor__(props: {
       ACTIONS.CODE_CHANGE,
       (data: { code: string }) => {
         setCode(data.code);
-        console.log("Changing Code");
+        console.log("Sett");
+        props.onCodeChange__(data.code);
       }
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,7 +37,7 @@ function Editor__(props: {
           console.log(code);
         }}
         height="100vh"
-        language="javascript"
+        language="python"
         theme="vs-dark"
         value={code}
         options={{
