@@ -11,12 +11,10 @@ function SignUp() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleSignIn = async () => {
     setIsLoading(true);
-    console.log(`Email : ${email}, Password: ${password}`);
     const res = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
     });
-    console.log(res);
     if (res.error) {
       setShowError(true);
     } else {
@@ -32,7 +30,6 @@ function SignUp() {
       email: email,
       password: password,
     });
-    console.log(res);
     if (!res.error) {
       setShowError(false);
       handleSignIn();

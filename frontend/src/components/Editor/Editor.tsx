@@ -14,7 +14,6 @@ function Editor__(props: {
       ACTIONS.CODE_CHANGE,
       (data: { code: string }) => {
         setCode(data.code);
-        console.log("Sett");
         props.onCodeChange__(data.code);
       }
     );
@@ -34,7 +33,6 @@ function Editor__(props: {
             roomId: props.roomId,
             code: event,
           });
-          console.log(code);
         }}
         height="100vh"
         language="python"

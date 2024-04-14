@@ -13,12 +13,10 @@ function Login() {
 
   const handleSignIn = async () => {
     setIsLoading(true);
-    console.log(`Email : ${email}, Password: ${password}`);
     const res = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
     });
-    console.log(res);
     if (res.error) {
       setShowError(true);
     } else {

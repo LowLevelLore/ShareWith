@@ -77,13 +77,11 @@ const Page: FC<Params> = ({ params }) => {
         setIsLoading(false);
       };
       function handleErrors(e: Error) {
-        console.log("socket error", e);
         toast.error("Socket connection failed, try again later.");
         window.location.pathname = "/";
       }
       await checkLogin();
       const init = async () => {
-        console.log("inti ran");
         if (!socketRef.current) {
           socketRef.current = await initSocket();
           socketRef.current.on("connect_error", (err) => handleErrors(err));
@@ -119,16 +117,6 @@ const Page: FC<Params> = ({ params }) => {
                   !data.username.startsWith("null")
                 ) {
                   toast.success(`${data.username} joined the room`);
-                  // const newClient: Client = {
-                  //   socketId: data.socketId,
-                  //   username: data.username,
-                  // };
-                  // if (clients) {
-                  //   setClients([...clients, newClient]);
-                  // } else {
-                  //   setClients([newClient]);
-                  // }
-                  // console.log(getUsernames());
                 }
                 setClients(data.clients);
               } catch {
@@ -231,8 +219,6 @@ const Page: FC<Params> = ({ params }) => {
                               input: inp?.value,
                             },
                           };
-
-                          // console.log(document.getElementById("inputs")?.value);
 
                           try {
                             const response = await axios.request(options);

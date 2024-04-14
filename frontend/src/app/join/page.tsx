@@ -75,7 +75,6 @@ function Page() {
                 <input
                   onChange={(e) => {
                     setId(e.target.value);
-                    console.log(e.target.value);
                   }}
                   type="text"
                   id="txnId"

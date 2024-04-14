@@ -47,7 +47,6 @@ io.on("connection", (socket) => {
         socketId: socket.id,
       });
     });
-    console.log(clients);
   });
   socket.on("disconnecting", () => {
     const rooms = [...socket.rooms];
@@ -86,7 +85,6 @@ server.listen(PORT, () => {
 });
 
 app.post("/sendmail", async (req, res) => {
-  console.log("Recieved");
   const res_ = await trasport.sendMail({
     subject: `${req.body.mail} : ${req.body.subject}`,
     from: "hacknuthon5@gmail.com",
