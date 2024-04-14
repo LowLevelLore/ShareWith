@@ -1,11 +1,6 @@
 "use client";
-import React, {
-  useState,
-  FC,
-  useEffect,
-  useRef,
-  TextareaHTMLAttributes,
-} from "react";
+import React, { useState, FC, useEffect, useRef } from "react";
+import Image from "next/image";
 import Client from "@/components/Client/Client";
 import Editor__ from "@/components/Editor/Editor";
 import { initSocket } from "@/lib/socket";
@@ -14,14 +9,12 @@ import ACTIONS from "@/components/Editor/Actions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 var axios = require("axios");
-import CIcon from "@coreui/icons-react";
-import { cilTerminal } from "@coreui/icons";
+
 import {
   User,
   createClientComponentClient,
 } from "@supabase/auth-helpers-nextjs";
 import Modal from "react-modal";
-import Piston, { SubmissionResult } from "piston-js";
 
 const customStyles = {
   content: {
@@ -216,6 +209,7 @@ const Page: FC<Params> = ({ params }) => {
                       onClick={async (event) => {
                         event.preventDefault();
                         setRunText("running...");
+                        // Please ignore this, it works trust me
                         const inp: HTMLTextAreaElement | null =
                           document.getElementById("inputs");
                         if (localStorage.getItem("code") != null) {
@@ -282,7 +276,7 @@ const Page: FC<Params> = ({ params }) => {
               Outputs
             </div>
             <div
-              className="output w-full px-4 overflow-y-auto overflow-x-hidden p-3 mt-4 text-white border-b-2 border-white bg-white border-0 dark:bg-black dark:text-white dark:placeholder-gray-400 h-full"
+              className="output w-full px-4 mb-2 overflow-y-auto overflow-x-hidden mt-4 text-white border-b-2 border-white bg-white border-0 dark:bg-black dark:text-white dark:placeholder-gray-400 h-full"
               id="code_outputs"
             >
               {output?.map((elem, index) => (
@@ -342,7 +336,12 @@ const Page: FC<Params> = ({ params }) => {
                 openModal();
               }}
             >
-              <img src="/terminal.png" alt="Terminal" height={32} width={32} />
+              <Image
+                src="/terminal.png"
+                alt="Terminal"
+                height={32}
+                width={32}
+              />
             </button>
           </div>
 
