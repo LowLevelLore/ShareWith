@@ -35,7 +35,7 @@ function Editor__(props: {
           });
         }}
         height="100vh"
-        language="python"
+        language="javascript"
         theme="vs-dark"
         value={code}
         options={{

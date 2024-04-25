@@ -42,7 +42,10 @@ interface Params {
 }
 
 const Page: FC<Params> = ({ params }) => {
-  const supabase = createClientComponentClient();
+  const supabase = createClientComponentClient({
+    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<User>();
@@ -207,12 +210,12 @@ const Page: FC<Params> = ({ params }) => {
                             headers: {
                               "content-type": "application/json",
                               "X-RapidAPI-Key":
-                                "beffd5b897mshfc71b5776ff983dp145860jsn33dd55627068",
+                                "2375697c55msh6da9e62195e0161p11944bjsn2ce9ef643376",
                               "X-RapidAPI-Host":
                                 "online-code-compiler.p.rapidapi.com",
                             },
                             data: {
-                              language: "python3",
+                              language: "nodejs",
                               version: "latest",
                               code: localStorage.getItem("code"),
 

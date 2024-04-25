@@ -15,8 +15,10 @@ import { useNavigate } from "react-router-dom";
 
 function Page() {
   const router = useRouter();
-  const supabase = createClientComponentClient();
-  const [isLoading, setIsLoading] = useState(true);
+  const supabase = createClientComponentClient({
+    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  });  const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<User>();
   const [id, setId] = useState("");

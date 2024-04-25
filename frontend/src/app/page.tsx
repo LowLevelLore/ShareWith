@@ -13,7 +13,10 @@ import Head from "next/head";
 
 export default function Home() {
   const router = useRouter();
-  const supabase = createClientComponentClient();
+  const supabase = createClientComponentClient({
+    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<User>();
@@ -59,7 +62,7 @@ export default function Home() {
                 <MacbookScroll
                   title={
                     <span>
-                      {"What's"} common between ths website and a macbook ?{" "}
+                      {"What's"} common between this website and a macbook ?{" "}
                       <br /> You can code on both.
                     </span>
                   }

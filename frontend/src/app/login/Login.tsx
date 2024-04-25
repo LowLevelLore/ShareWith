@@ -2,6 +2,7 @@ import Loading from "@/components/loading/loading";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import React, { useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
+// const process = require("process")
 function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [email, setEmail] = useState("");
@@ -9,7 +10,10 @@ function Login() {
 
   const [showError, setShowError] = useState(false);
 
-  const supabase = createClientComponentClient();
+  const supabase = createClientComponentClient({
+    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  });
 
   const handleSignIn = async () => {
     setIsLoading(true);
