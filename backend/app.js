@@ -68,30 +68,4 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
-const MAIL = "hacknuthon5@gmail.com";
-const PASSWORD = "lpxw vbkm nzzl ybid";
-
-const trasport = nm.createTransport({
-  service: "gmail",
-  auth: {
-    user: MAIL,
-    pass: PASSWORD,
-  },
-});
-
-server.listen(PORT, () => {
-  console.log(`Listening on PORT : ${PORT}`);
-});
-
-app.post("/sendmail", async (req, res) => {
-  const res_ = await trasport.sendMail({
-    subject: `${req.body.mail} : ${req.body.subject}`,
-    from: "hacknuthon5@gmail.com",
-    to: "hacknuthon5@gmail.com",
-    text: req.body.body,
-  });
-  res.send(res_);
-});
-
 module.exports = app;
