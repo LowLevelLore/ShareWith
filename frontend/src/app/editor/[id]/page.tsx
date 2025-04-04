@@ -85,7 +85,7 @@ const Page: FC<Params> = ({ params }) => {
       }
       await checkLogin();
       const init = async () => {
-        console.log("Here")
+        console.log("Here");
         if (!socketRef.current) {
           socketRef.current = await initSocket();
           socketRef.current.on("connect_error", (err) => handleErrors(err));
@@ -202,44 +202,45 @@ const Page: FC<Params> = ({ params }) => {
                         event.preventDefault();
                         setRunText("running...");
                         // Please ignore this, it works trust me
-                        const inp: HTMLTextAreaElement | null =
-                          document.getElementById("inputs");
-                        if (localStorage.getItem("code") != null) {
-                          const options = {
-                            method: "POST",
-                            url: "https://online-code-compiler.p.rapidapi.com/v1/",
-                            headers: {
-                              "content-type": "application/json",
-                              "X-RapidAPI-Key":
-                                "2375697c55msh6da9e62195e0161p11944bjsn2ce9ef643376",
-                              "X-RapidAPI-Host":
-                                "online-code-compiler.p.rapidapi.com",
-                            },
-                            data: {
-                              language: "nodejs",
-                              version: "latest",
-                              code: localStorage.getItem("code"),
+                        const inp = document.getElementById("inputs");
 
-                              input: inp?.value,
-                            },
-                          };
+                        // Define the options for the new API endpoint
+                        const options = {
+                          method: "POST",
+                          url: "https://onecompiler-apis.p.rapidapi.com/api/v1/run",
+                          headers: {
+                            "Content-Type": "application/json",
+                            "x-rapidapi-key":
+                              "beffd5b897mshfc71b5776ff983dp145860jsn33dd55627068",
+                            "x-rapidapi-host":
+                              "onecompiler-apis.p.rapidapi.com",
+                          },
+                          data: {
+                            language: "python",
+                            stdin: inp?.value || "",
+                            files: [
+                              {
+                                name: "index.py",
+                                content: localStorage.getItem("code"),
+                              },
+                            ],
+                          },
+                        };
 
-                          try {
-                            const response = await axios.request(options);
-                            let sample = response.data.output;
-                            let out: string[] = [];
-                            sample.split("\n").forEach((element: string) => {
-                              let line = "";
-                              element.split("\t").forEach((sub: string) => {
-                                line += sub;
-                                line += "    ";
-                              });
-                              out.push(line.trimEnd());
-                              setOutput(out);
+                        try {
+                          const response = await axios.request(options);
+                          const sample = response.data.stdout;
+                          const out = [];
+                          sample.split("\n").forEach((element) => {
+                            let line = "";
+                            element.split("\t").forEach((sub) => {
+                              line += sub + "    ";
                             });
-                          } catch (error) {
-                            console.error(error);
-                          }
+                            out.push(line.trimEnd());
+                          });
+                          setOutput(out);
+                        } catch (error) {
+                          console.error(error);
                         }
                         setRunText("Run");
                       }}
