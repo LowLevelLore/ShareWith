@@ -85,6 +85,7 @@ const Page: FC<Params> = ({ params }) => {
       }
       await checkLogin();
       const init = async () => {
+        console.log("Here")
         if (!socketRef.current) {
           socketRef.current = await initSocket();
           socketRef.current.on("connect_error", (err) => handleErrors(err));

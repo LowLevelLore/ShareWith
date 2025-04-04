@@ -30,6 +30,7 @@ const getAllConnectedClients = (roomId) => {
 };
 
 const app = express();
+app.set({ port: 3001 });
 app.use(cors());
 app.use(bodyParser());
 const server = http.createServer(app);
@@ -37,6 +38,7 @@ const io = new Server(server);
 
 io.on("connection", (socket) => {
   socket.on(ACTIONS.JOIN, ({ roomId, username }) => {
+    console.log("Hello")
     userSocketMap[socket.id] = username;
     socket.join(roomId);
     let clients = getAllConnectedClients(roomId);
