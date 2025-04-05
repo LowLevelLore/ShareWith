@@ -100,6 +100,7 @@ function Page() {
               <div className="relative">
                 <input
                   onChange={(e) => {
+                    console.log("Typing:", e.target.value); // Check browser console for this log
                     setUsername(e.target.value);
                   }}
                   type="text"
