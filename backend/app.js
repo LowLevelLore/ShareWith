@@ -2,12 +2,17 @@ const createError = require("http-errors");
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const http = require("http");
+const https = require("https"); // changed from http
+const fs = require("fs");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const { Server } = require("socket.io");
 const nm = require("nodemailer");
 const bodyParser = require("body-parser");
+
+// Self-signed certs
+const key = fs.readFileSync(".key.pem");
+const cert = fs.readFileSync(".cert.pem");
 
 const ACTIONS = {
   JOIN: "join",
@@ -27,10 +32,13 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const server = http.createServer(app);
+// Create HTTPS server
+const server = https.createServer({ key, cert }, app);
+
+// Attach Socket.IO
 const io = new Server(server, {
   cors: {
-    origin: "*", // Adjust for production: restrict to your client domain(s)
+    origin: "*", // Adjust in production
     methods: ["GET", "POST"],
   },
 });
@@ -79,6 +87,7 @@ io.on("connection", (socket) => {
   });
 });
 
+// Start HTTPS server
 server.listen(port, () => {
-  console.log(`Server is listening on http://localhost:${port}`);
+  console.log(`🔐 Secure server running at https://<your-ec2-ip>:${port}`);
 });
