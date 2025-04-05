@@ -11,8 +11,8 @@ const nm = require("nodemailer");
 const bodyParser = require("body-parser");
 
 // Self-signed certs
-const key = fs.readFileSync(".key.pem");
-const cert = fs.readFileSync(".cert.pem");
+const key = fs.readFileSync("./key.pem");
+const cert = fs.readFileSync("./cert.pem");
 
 const ACTIONS = {
   JOIN: "join",
