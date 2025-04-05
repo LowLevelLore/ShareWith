@@ -7,6 +7,6 @@ export const initSocket = async()=>{
         timeout: 10000,
         transports: ['websocket'],
     };
-    return io(process.env.REACT_APP_BACKEND_URL || "http://13.233.2.51:3001", options);
+    return io(process.env.REACT_APP_BACKEND_URL || "wss://172.20.10.3:3001", options);
     // return io(process.env.REACT_APP_BACKEND_URL || "http://localhost:3001", options);
 }

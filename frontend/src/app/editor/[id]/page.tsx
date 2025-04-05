@@ -81,7 +81,7 @@ const Page: FC<Params> = ({ params }) => {
       };
       function handleErrors(e: Error) {
         toast.error("Socket connection failed, try again later.");
-        window.location.pathname = "/";
+        // window.location.pathname = "/";
       }
       await checkLogin();
       const init = async () => {
