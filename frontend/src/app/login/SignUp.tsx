@@ -84,7 +84,7 @@ function SignUp() {
             ) : (
               <>
                 <button
-                  onClick={handleSignIn}
+                  onClick={handleSignUp}
                   className="inline-block cursor-pointer mt-3 rounded-md bg-blue-500 px-4 py-3.5 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-700 focus-visible:ring-offset-2 active:scale-95"
                 >
                   Login
