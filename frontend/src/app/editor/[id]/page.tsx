@@ -230,8 +230,8 @@ const Page: FC<Params> = ({ params }) => {
                         try {
                           const response = await axios.request(options);
                           const sample = response.data.stdout;
-                          const out = [];
-                          sample.split("\n").forEach((element) => {
+                          const out: string[] = [];
+                          sample.split("\n").forEach((element: string) => {
                             let line = "";
                             element.split("\t").forEach((sub) => {
                               line += sub + "    ";
