@@ -202,7 +202,7 @@ const Page: FC<Params> = ({ params }) => {
                         event.preventDefault();
                         setRunText("running...");
                         // Please ignore this, it works trust me
-                        const inp = document.getElementById("inputs");
+                        const inp = document.getElementById("inputs") as HTMLInputElement;
 
                         // Define the options for the new API endpoint
                         const options = {
